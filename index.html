@@ -17,6 +17,9 @@
         <meta name="apple-mobile-web-app-title" content="notepad">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap" rel="stylesheet">
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -24,6 +27,31 @@
         <![endif]-->
         
         <script src="scripts.js" async defer></script>
+    </body>
+   
+    <body>
+        <div id="notes-container">
+            <h2>Lists</h2>
+            <textarea id="note-input" placeholder="Start your list here..."></textarea>
+            <button onclick="saveNote()">Save</button>
+            <div id="saved-notes"></div>
+        </div>
+    
+        <script>
+            function saveNote() {
+                var textarea = document.getElementById("note-input");
+                var note = textarea.value;
+                if (note.trim() === "") {
+                    alert("Please enter a valid note.");
+                    return;
+                }
+                var savedNotes = document.getElementById("saved-notes");
+                var p = document.createElement("p");
+                p.textContent = note;
+                savedNotes.appendChild(p);
+                textarea.value = "";
+            }
+        </script>
     </body>
 </html>
 
